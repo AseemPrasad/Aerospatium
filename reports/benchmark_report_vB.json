@@ -1,0 +1,39 @@
+{
+  "threads_1": {
+    "thread_count": 1,
+    "throughput_qps": 1181.6545763577483,
+    "p50_latency_ms": 0.8218999992095632,
+    "p95_latency_ms": 1.2302299992370536,
+    "p99_latency_ms": 1.5317260014489893,
+    "total_time_s": 0.08462710000094376
+  },
+  "threads_2": {
+    "thread_count": 2,
+    "throughput_qps": 1172.049891830102,
+    "p50_latency_ms": 0.8444999984931201,
+    "p95_latency_ms": 1.2088149986084318,
+    "p99_latency_ms": 14.428142001634125,
+    "total_time_s": 0.08532059999924968
+  },
+  "threads_4": {
+    "thread_count": 4,
+    "throughput_qps": 1175.4002825781631,
+    "p50_latency_ms": 0.8171999998012325,
+    "p95_latency_ms": 1.2013200028377466,
+    "p99_latency_ms": 16.69944999976007,
+    "total_time_s": 0.0850773999991361
+  },
+  "threads_8": {
+    "thread_count": 8,
+    "throughput_qps": 1097.8563257228125,
+    "p50_latency_ms": 0.8451999983662972,
+    "p95_latency_ms": 1.1627049998423897,
+    "p99_latency_ms": 20.611493999640576,
+    "total_time_s": 0.09108660000129021
+  },
+  "memory_profiling": {
+    "peak_memory_mb": 0.23238182067871094,
+    "ram_ceiling_gb": 15.0,
+    "memory_safety_pass": true
+  }
+}

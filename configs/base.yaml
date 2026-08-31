@@ -1,0 +1,18 @@
+paths:
+  h3_static_output: data/processed/h3_static_features.parquet
+  processed_dir: data/processed
+  raw_dir: data/raw
+project_name: AeroSpatium
+scenario:
+  canonical_date: '2023-08-15'
+  simulation_end_utc: '2023-08-15T23:00:00Z'
+  simulation_start_utc: '2023-08-15T00:00:00Z'
+study_area:
+  bbox:
+    max_lat: 40.0
+    max_lon: -121.3
+    min_lat: 39.6
+    min_lon: -121.8
+  crs: EPSG:4326
+  h3_resolution: 8
+  name: Butte_County_Camp_Fire_AOI

@@ -1,0 +1,93 @@
+name: Performance Benchmarks
+
+on:
+  schedule:
+    # Run every day at 6 AM UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+    paths:
+      - "src/aerospatium/graph/router.py"
+      - "src/aerospatium/graph/bpr_cost.py"
+      - "tests/performance/"
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Generate synthetic benchmark data
+        run: |
+          python -c "
+          import pandas as pd, numpy as np, h3, math
+          # Generate 500-node synthetic road network in AOI
+          rng = np.random.default_rng(42)
+          n = 500
+          lats = rng.uniform(39.62, 39.98, n)
+          lons = rng.uniform(-121.78, -121.35, n)
+          nodes = pd.DataFrame({'node_id': range(n), 'lat': lats, 'lon': lons})
+          edges = []
+          for i in range(n):
+              for j in rng.choice(n, size=min(5, n), replace=False):
+                  if i != j:
+                      dist = math.sqrt((lats[i]-lats[j])**2 + (lons[i]-lons[j])**2)
+                      if dist < 0.05:
+                          edges.append({
+                              'edge_id': len(edges),
+                              'u': i, 'v': j,
+                              'base_time_s': dist * 500,
+                              'speed_kmh': 60,
+                              'weight_t0_s': dist * 500,
+                              'weight_t3_s': dist * 500,
+                              'weight_t6_s': dist * 600,
+                              'weight_t12_s': dist * 600,
+                              'length_m': dist * 111000,
+                              'gnn_burn_prob_t0': 0.1,
+                              'gnn_burn_prob_t3': 0.3,
+                              'gnn_burn_prob_t6': 0.6,
+                              'gnn_burn_prob_t12': 0.8,
+                              'pm25_ugm3': 30.0,
+                              'geometry_wkt': f'LINESTRING({lons[i]} {lats[i]}, {lons[j]} {lats[j]})',
+                          })
+          import os
+          os.makedirs('data/processed', exist_ok=True)
+          pd.DataFrame(edges).to_parquet('data/processed/benchmark_edges.parquet', compression='snappy')
+          nodes.to_parquet('data/processed/benchmark_nodes.parquet', compression='snappy')
+          print(f'Generated {len(edges)} edges, {len(nodes)} nodes')
+          "
+      - name: Run concurrent routing benchmark
+        run: |
+          python -c "
+          import time, numpy as np, pandas as pd
+          from concurrent.futures import ThreadPoolExecutor
+          from aerospatium.graph.router import time_dependent_astar
+
+          edges = pd.read_parquet('data/processed/benchmark_edges.parquet')
+          nodes = pd.read_parquet('data/processed/benchmark_nodes.parquet')
+          queries = [(0, 499, 0)] * 100
+
+          latencies = []
+          for tc in [1, 2, 4, 8]:
+              start = time.perf_counter()
+              with ThreadPoolExecutor(max_workers=tc) as ex:
+                  list(ex.map(lambda q: time_dependent_astar(edges, nodes, start=q[0], goal=q[1], weight_column='weight_t0_s'), queries))
+              elapsed = (time.perf_counter() - start) / 100
+              print(f'{tc} threads: {elapsed*1000:.2f} ms/query, {100/(time.perf_counter()-start)*tc:.0f} QPS')
+          "
+      - name: Save benchmark results
+        run: |
+          echo "benchmark run completed" > benchmark_result.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: benchmark_result.txt

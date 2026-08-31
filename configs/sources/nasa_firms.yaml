@@ -1,0 +1,37 @@
+# NASA FIRMS source configuration for Aerospatium
+# Used by fire_ingest_hourly DAG
+
+api:
+  base_url: "https://firms.modaps.eosdis.nasa.gov"
+  endpoint: "/data/active_fire"
+  format: "csv"
+  satellites:
+    - viirs_snpp
+    - viirs_noaa_20
+    - modis_terra
+    - modis_aqua
+
+aoi_filter:
+  enabled: true
+  bbox:
+    min_lat: 39.6
+    max_lat: 40.0
+    min_lon: -121.8
+    max_lon: -121.3
+  polygon_mode: "bbox_intersect"
+
+confidence_filters:
+  viirs:
+    low: "l"
+    nominal: "n"
+    high: "h"
+    min_level: "n"  # drop low-confidence detections
+  modis:
+    min_threshold: 50  # 0-100 scale
+
+temporal_window_hours:
+  historical_lookback: 24
+  forecast_horizon: 12
+
+data_dir: "data/raw/firms"
+output_file: "data/processed/firms_hotspots_latest.parquet"

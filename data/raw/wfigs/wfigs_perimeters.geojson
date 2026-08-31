@@ -1,0 +1,49 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "poly_IncidentName": "Camp Fire Baseline",
+        "attr_FireDiscoveryDateTime": "2023-08-15T06:30:00Z",
+        "poly_Source": "NIFC WFIGS",
+        "poly_Acres": 153336.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -121.65,
+              39.75
+            ],
+            [
+              -121.55,
+              39.78
+            ],
+            [
+              -121.48,
+              39.85
+            ],
+            [
+              -121.52,
+              39.92
+            ],
+            [
+              -121.68,
+              39.88
+            ],
+            [
+              -121.72,
+              39.8
+            ],
+            [
+              -121.65,
+              39.75
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

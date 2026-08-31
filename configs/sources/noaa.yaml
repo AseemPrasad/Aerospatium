@@ -1,0 +1,43 @@
+# NOAA/NASA data source configurations for AeroSpatium
+# Used by Airflow DAGs for hourly data polling
+
+nasa_firms:
+  viirs_url: "https://firms.modaps.eosdis.nasa.gov/data/active_fire/viirs/SNPP-HIMARS/catalog/today.csv"
+  modis_url: "https://firms.modaps.eosdis.nasa.gov/data/active_fire/modis/C6.1/catalog/today.csv"
+  aoi_bbox:
+    min_lat: 39.6
+    max_lat: 40.0
+    min_lon: -121.8
+    max_lon: -121.3
+  confidence_threshold: 50  # MODIS confidence 0-100
+  polling_interval_minutes: 30
+  timeout_seconds: 30
+
+noaa:
+  era5_land_url: "https://data.ecmwf.int/forecasts"
+  era5_dataset: "reanalysis-era5-land"
+  variables:
+    - u10    # 10m U-wind
+    - v10    # 10m V-wind
+    - t2m    # 2m temperature (K)
+    - d2m    # 2m dewpoint (K)
+  forecast_horizon_hours: 12
+  polling_interval_minutes: 60
+  api_key_env: "ECMWF_API_KEY"
+
+caltrans_pems:
+  stations: [318491, 318492, 318493, 318494, 318495]
+  url: "https://pems.dot.ca.gov/api"
+  polling_interval_minutes: 5
+  api_key_env: "PEMS_API_KEY"
+
+epa_airnow:
+  sites:
+    - Paradise-Theater
+    - Chico-Manzanita
+    - Oroville-County
+    - Magalia-Skyway
+    - Cohasset-Ridge
+    - Forest-Ranch
+  url: "https://www.airnowapi.org"
+  polling_interval_minutes: 60

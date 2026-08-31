@@ -1,0 +1,29 @@
+raster bounds : (-121.8, 39.60112, -121.3014, 40.0)
+east gap : 0.0014000 deg = 119.7 m
+south gap: 0.0011200 deg = 123.8 m
+strict area coverage of AOI: 99.44%
+px needed exact E-W: 1805.05 | provided: 1800
+px needed exact N-S: 1444.04 | provided: 1440
+
+H3 res-8 cells intersecting AOI bbox: 2526
+cells with centroid OUTSIDE raster coverage: 15
+    88281404c3fffff 39.996578 -121.300551
+    8828148c97fffff 39.722172 -121.301154
+    8828334cabfffff 39.600308 -121.787482
+    88281414d5fffff 39.848462 -121.300299
+    88281416cdfffff 39.774328 -121.300173
+    882814061bfffff 39.922546 -121.300425
+    88281484dbfffff 39.600151 -121.485696
+    882814b223fffff 39.601074 -121.5828
+    88281484edfffff 39.600269 -121.417373
+    8828148511fffff 39.600348 -121.349023
+
+OSM header box (v2 recheck): -121.6250000/38.3740000 -> -121.1540000/38.7380000
+FIRMS AOI hits (v2 recheck): 0 / 74
+MODIS AOI hits (v2 recheck): 29 / 94000
+
+--- NB01 PIPELINE TEST ---
+stacked arrays: (1440, 1800) float32 int16 | RAM ~15.6 MB
+burnable codes: [1, 2, 4, 10] | non-burnable: [11]
+demo hex 882815db63fffff: majority EVT=4 (3 px) -> Chaparral FBFM4 load=1.12 kg/m2 sav=6560 1/m depth=1.8 m Mx=0.2
+PIPELINE OK

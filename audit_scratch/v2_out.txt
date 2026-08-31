@@ -1,0 +1,77 @@
+
+==============================================================================
+RASTER v2: DEM SRTM 30m (data/raw/dem/srtm_30m_aoi.tif)
+==============================================================================
+size on disk  : 10,377,024 bytes
+driver        : GTiff | dtype: ('float32',) | bands: 1
+width x height: 1800 x 1440 = 2,592,000 px
+crs           : EPSG:4326 | epsg: 4326
+transform     : (0.000277, 0.0, -121.8, 0.0, -0.000277, 40.0)
+res (deg)     : (0.000277, 0.000277)
+bounds        : (-121.8, 39.60112, -121.3014, 40.0)
+nodata        : -9999.0
+block shapes  : [(1, 1800)]
+compress      : none
+tags          : {'AREA_OR_POINT': 'Area'}
+EXACT AOI match (tol 1e-9): False
+valid px      : 2592000 | masked px: 0
+min/max       : 194.26632690429688 1405.05224609375
+mean/std      : 800.0008 263.9846
+percentiles   : {0: 194.266, 1: 277.369, 5: 373.617, 25: 589.908, 50: 800.034, 75: 1010.12, 95: 1226.388, 99: 1322.586, 100: 1405.052}
+unique values : 2370647
+top-8 values  : [(1031.51, 6), (520.59, 5), (629.82, 5), (663.2, 5), (684.62, 5), (694.74, 5), (709.71, 5), (740.78, 5)]
+raw contains -9999: False | raw contains -32768: False
+corner px(0,0) -> lon=-121.7998615 lat=39.9998615
+corner px(1439,1799) -> lon=-121.3015385 lat=39.6012585
+
+==============================================================================
+RASTER v2: LANDFIRE EVT (data/raw/landfire/landfire_evt.tif)
+==============================================================================
+size on disk  : 5,188,704 bytes
+driver        : GTiff | dtype: ('int16',) | bands: 1
+width x height: 1800 x 1440 = 2,592,000 px
+crs           : EPSG:4326 | epsg: 4326
+transform     : (0.000277, 0.0, -121.8, 0.0, -0.000277, 40.0)
+res (deg)     : (0.000277, 0.000277)
+bounds        : (-121.8, 39.60112, -121.3014, 40.0)
+nodata        : -9999.0
+block shapes  : [(2, 1800)]
+compress      : none
+tags          : {'AREA_OR_POINT': 'Area'}
+EXACT AOI match (tol 1e-9): False
+valid px      : 2592000 | masked px: 0
+min/max       : 1.0 11.0
+mean/std      : 4.2996 3.5786
+percentiles   : {0: 1.0, 1: 1.0, 5: 1.0, 25: 2.0, 50: 4.0, 75: 4.0, 95: 11.0, 99: 11.0, 100: 11.0}
+unique values : 5
+value:count   : {1: 647942, 2: 647812, 4: 648559, 10: 517909, 11: 129778}
+share %       : {1: 25.0, 2: 24.99, 4: 25.02, 10: 19.98, 11: 5.01}
+raw contains -9999: False | raw contains -32768: False
+corner px(0,0) -> lon=-121.7998615 lat=39.9998615
+corner px(1439,1799) -> lon=-121.3015385 lat=39.6012585
+
+==============================================================================
+CO-REGISTRATION CHECK (DEM vs EVT)
+==============================================================================
+identical transform/crs/grid: True
+
+==============================================================================
+FUEL CROSSWALK CSV
+==============================================================================
+size on disk  : 279 bytes
+raw bytes     : b'evt_code,fuel_name,fbfm13,fuel_bed_depth_m,fuel_load_kg_m2,sav_ratio_m_inv,moisture_extinction\r\n1,Short Grass,1,0.3,0.166,11480,0.12\r\n2,Timber Grass,2,0.6,0.896,9840,0.15\r\n4,Chaparral,4,1.8,1.12,6560,0.2\r\n10,Timber Litter,10,0.3,2.69,4920,0.25\r\n11,Non-Burnable,99,0.0,0.0,0,0.0\r\n'
+shape         : (5, 7)
+dtypes        : {'evt_code': 'int64', 'fuel_name': 'object', 'fbfm13': 'int64', 'fuel_bed_depth_m': 'float64', 'fuel_load_kg_m2': 'float64', 'sav_ratio_m_inv': 'int64', 'moisture_extinction': 'float64'}
+   evt_code      fuel_name  fbfm13  fuel_bed_depth_m  fuel_load_kg_m2  sav_ratio_m_inv  moisture_extinction
+0         1    Short Grass       1               0.3            0.166            11480                 0.12
+1         2   Timber Grass       2               0.6            0.896             9840                 0.15
+2         4      Chaparral       4               1.8            1.120             6560                 0.20
+3        10  Timber Litter      10               0.3            2.690             4920                 0.25
+4        11   Non-Burnable      99               0.0            0.000                0                 0.00
+null counts   : {'evt_code': 0, 'fuel_name': 0, 'fbfm13': 0, 'fuel_bed_depth_m': 0, 'fuel_load_kg_m2': 0, 'sav_ratio_m_inv': 0, 'moisture_extinction': 0}
+raster codes  : [1, 2, 4, 10, 11]
+crosswalk keys: [1, 2, 4, 10, 11]
+MISSING in crosswalk: [] | EXTRA in crosswalk: []
+
+H3 res-8: hex area 0.7523 km2 | AOI 1904.1 km2 | est cells 2531
+px area ~731 m2 -> ~1030 px/hex

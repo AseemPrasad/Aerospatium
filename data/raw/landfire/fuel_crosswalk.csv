@@ -1,0 +1,6 @@
+evt_code,fuel_name,fbfm13,fuel_bed_depth_m,fuel_load_kg_m2,sav_ratio_m_inv,moisture_extinction
+1,Short Grass,1,0.3,0.166,11480,0.12
+2,Timber Grass,2,0.6,0.896,9840,0.15
+4,Chaparral,4,1.8,1.12,6560,0.2
+10,Timber Litter,10,0.3,2.69,4920,0.25
+11,Non-Burnable,99,0.0,0.0,0,0.0

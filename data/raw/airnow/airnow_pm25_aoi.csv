@@ -1,0 +1,7 @@
+site_name,latitude,longitude,pm25_ugm3,timestamp,unit
+Paradise-Theater,39.759,-121.611,85.4,2023-08-15 08:00:00,UG/M3
+Chico-Manzanita,39.761,-121.843,38.2,2023-08-15 08:00:00,UG/M3
+Oroville-County,39.512,-121.556,22.1,2023-08-15 08:00:00,UG/M3
+Magalia-Skyway,39.812,-121.578,110.6,2023-08-15 08:00:00,UG/M3
+Cohasset-Ridge,39.924,-121.731,45.0,2023-08-15 08:00:00,UG/M3
+Forest-Ranch,39.881,-121.672,64.8,2023-08-15 08:00:00,UG/M3

@@ -1,0 +1,116 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "aerospatium"
+version = "0.2.0-beta"
+description = "Multi-modal wildfire progression & evacuation route optimization engine"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "AeroSpatium Team"}]
+keywords = ["wildfire", "fire-spread", "evacuation", "routing", "pytorch-geometric", "xgboost"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+
+dependencies = [
+    "numpy>=1.24,<2.2",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "pyarrow>=12.0",
+    "duckdb>=0.9",
+    "geopandas>=0.13",
+    "shapely>=2.0",
+    "h3>=4.0",
+    "rasterio>=1.3",
+    "xarray>=2023.08",
+    "netcdf4>=1.6",
+    "torch>=2.0",
+    "xgboost>=2.0",
+    "fastapi>=0.100",
+    "uvicorn[standard]>=0.23",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "pytest-xdist>=3.3",
+    "ruff>=0.1.0",
+    "mypy>=1.5",
+    "black>=23.0",
+    "pre-commit>=3.4",
+]
+pyg = ["torch-geometric>=2.3"]
+airflow = ["apache-airflow>=2.7"]
+osmium = ["pyosmium>=3.0"]
+rustworkx-deps = ["rustworkx>=0.13"]
+
+[project.scripts]
+aerospatium = "aerospatium.api.main:app"
+
+[project.urls]
+Homepage = "https://github.com/aerospatium/aerospatium"
+Documentation = "https://github.com/aerospatium/aerospatium#readme"
+Issues = "https://github.com/aerospatium/aerospatium/issues"
+
+[tool.setuptools]
+packages = ["aerospatium", "aerospatium.api", "aerospatium.ml", "aerospatium.spatial",
+            "aerospatium.graph", "aerospatium.ca_engine"]
+package-dir = {"aerospatium" = "src/aerospatium"}
+
+[tool.setuptools.package-data]
+aerospatium = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-select = ["I", "UP", "RUF"]
+
+[tool.ruff.isort]
+known-first-party = ["aerospatium"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "7.4"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks integration tests",
+]
+
+[tool.coverage.run]
+source = ["src/aerospatium"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]

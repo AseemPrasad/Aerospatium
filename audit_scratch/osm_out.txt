@@ -1,0 +1,56 @@
+header box        : <bound method pybind11_detail_function_record_v1_msvc_md_mscver19.box of <osmium.io.Header object at 0x0000016B3BBC57F0>>
+header source     : None
+nodes             : 3727717
+ways              : 0
+relations         : 5020
+tagged nodes      : 151002
+highway ways      : 155183
+
+HIGHWAY distribution:
+   service         : 70861
+   footway         : 32562
+   residential     : 27412
+   secondary       : 7091
+   tertiary        : 4252
+   primary         : 3658
+   path            : 2399
+   cycleway        : 1629
+   motorway_link   : 1322
+   motorway        : 891
+   track           : 711
+   unclassified    : 609
+   secondary_link  : 411
+   pedestrian      : 391
+   primary_link    : 384
+   steps           : 300
+   tertiary_link   : 155
+   construction    : 62
+   busway          : 44
+   proposed        : 13
+   bridleway       : 10
+   raceway         : 9
+   corridor        : 3
+   rest_area       : 1
+   road            : 1
+   living_street   : 1
+   services        : 1
+
+MISSINGNESS on highway ways:
+   maxspeed missing: 147307 (94.9%)
+   lanes missing   : 141939 (91.5%)
+   oneway missing  : 130043 (83.8%)
+   surface missing : 134887 (86.9%)
+   name missing    : 111063 (71.6%)
+
+maxspeed values: {'45 mph': 2130, '40 mph': 1249, '35 mph': 1152, '25 mph': 1074, '65 mph': 892, '30 mph': 543, '55 mph': 312, '50 mph': 213, '15 mph': 133, '10 mph': 66, '5 mph': 62, '20 mph': 31, '35': 5, '70 mph': 5, '18 mph': 3, '25': 3, '15': 2, '24': 1}
+lanes values   : {'2': 4657, '3': 3690, '4': 2136, '1': 1430, '5': 1062, '6': 227, '7': 36, '8': 6}
+oneway values  : {'yes': 23249, 'no': 1873, '-1': 14, 'reversible': 4}
+surface values : {'asphalt': 13465, 'paved': 3132, 'concrete': 2603, 'dirt': 222, 'unpaved': 199, 'gravel': 124, 'paving_stones': 103, 'concrete:plates': 99, 'compacted': 96, 'ground': 78}
+bridge values  : {'yes': 1605, 'boardwalk': 47, 'viaduct': 26, 'low_water_crossing': 12, 'movable': 3}
+access values  : {'private': 12952, 'customers': 714, 'no': 379, 'yes': 153, 'permissive': 114, 'destination': 110, 'unknown': 15, 'designated': 9}
+railway values : {}
+
+segment count: 927,057 | total network length: 21869.0 km
+segment len mean=23.6m median=11.8m p95=82.6m max=2611.4m
+
+geometry extent from ways: lon(-121.6444521,-121.1006754) lat(38.321061,38.8189007)

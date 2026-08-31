@@ -1,0 +1,134 @@
+[
+  {
+    "origin_id": 1001,
+    "origin_name": "Paradise_Center",
+    "destination_id": 1006,
+    "destination_name": "Oroville_Center",
+    "evacuees": 4800,
+    "primary_corridor": {
+      "nodes": [
+        1001,
+        1010,
+        1012,
+        1005,
+        1006
+      ],
+      "edges": [
+        17,
+        19,
+        21,
+        23
+      ],
+      "travel_time_s": 1368.3651428222656,
+      "burn_risk": 0.41134790517389774
+    },
+    "secondary_corridor": {
+      "nodes": [
+        1001,
+        1009,
+        1011,
+        1005,
+        1006
+      ],
+      "edges": [
+        1,
+        3,
+        33,
+        23
+      ],
+      "travel_time_s": 10719.258728027344,
+      "burn_risk": 1.2842265628278255,
+      "overlap_fraction": 0.25
+    }
+  },
+  {
+    "origin_id": 1002,
+    "origin_name": "Magalia_Upper",
+    "destination_id": 1006,
+    "destination_name": "Oroville_Center",
+    "evacuees": 2600,
+    "primary_corridor": {
+      "nodes": [
+        1002,
+        1001,
+        1010,
+        1012,
+        1005,
+        1006
+      ],
+      "edges": [
+        10,
+        17,
+        19,
+        21,
+        23
+      ],
+      "travel_time_s": 1860.3543090820312,
+      "burn_risk": 1.3130662832409143
+    },
+    "secondary_corridor": {
+      "nodes": [
+        1002,
+        1007,
+        1014,
+        1003,
+        1011,
+        1005,
+        1006
+      ],
+      "edges": [
+        11,
+        13,
+        15,
+        6,
+        33,
+        23
+      ],
+      "travel_time_s": 12667.721374511719,
+      "burn_risk": 2.947535391896963,
+      "overlap_fraction": 0.2
+    }
+  },
+  {
+    "origin_id": 1008,
+    "origin_name": "Concow_Penta_Jct",
+    "destination_id": 1006,
+    "destination_name": "Oroville_Center",
+    "evacuees": 1385,
+    "primary_corridor": {
+      "nodes": [
+        1008,
+        1012,
+        1005,
+        1006
+      ],
+      "edges": [
+        31,
+        21,
+        23
+      ],
+      "travel_time_s": 1470.0711059570312,
+      "burn_risk": 0.13176548667252064
+    },
+    "secondary_corridor": {
+      "nodes": [
+        1008,
+        1001,
+        1009,
+        1011,
+        1005,
+        1006
+      ],
+      "edges": [
+        30,
+        1,
+        3,
+        33,
+        23
+      ],
+      "travel_time_s": 11311.653198242188,
+      "burn_risk": 1.7278449200093746,
+      "overlap_fraction": 0.3333333333333333
+    }
+  }
+]

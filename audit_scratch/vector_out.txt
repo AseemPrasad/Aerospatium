@@ -1,0 +1,74 @@
+
+==============================================================================
+DROUGHT USDM SIDECAR FILES
+==============================================================================
+.prj content: 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]]'
+.cpg content: 'UTF-8'
+DBF version=3 date=2026-08-19 records=5 header_len=161 rec_len=54
+DBF fields (name, type, len, dec): [('OBJECTID', 'N', 10, 0), ('DM', 'N', 5, 0), ('Shape_Leng', 'F', 19, 11), ('Shape_Area', 'F', 19, 11)]
+  rec0: [('OBJECTID', '         1'), ('DM', '    0'), ('Shape_Leng', '  9.91334975310e+07'), ('Shape_Area', '  1.96730984150e+12')]
+  rec1: [('OBJECTID', '         2'), ('DM', '    1'), ('Shape_Leng', '  7.87371819955e+07'), ('Shape_Area', '  1.80187743803e+12')]
+  rec2: [('OBJECTID', '         3'), ('DM', '    2'), ('Shape_Leng', '  5.69409030806e+07'), ('Shape_Area', '  1.50358257446e+12')]
+  rec3: [('OBJECTID', '         4'), ('DM', '    3'), ('Shape_Leng', '  2.60889642527e+07'), ('Shape_Area', '  7.23525896229e+11')]
+  rec4: [('OBJECTID', '         5'), ('DM', '    4'), ('Shape_Leng', '  5.20198368127e+06'), ('Shape_Area', '  1.05001330315e+11')]
+SHP file_code=9994 length=4,212,584B shape_type=5
+SHP declared bbox: lon(-159.7864540242271,-65.22104549612999) lat(17.884192337368592,65.10798491683991) z(0.0,0.0) m(0.0,0.0)
+
+--- Drought via DuckDB Spatial ---
+rows: 5
+  column_name            column_type null   key default extra
+0     OGC_FID                 BIGINT  YES  None    None  None
+1    OBJECTID                 BIGINT  YES  None    None  None
+2          DM                INTEGER  YES  None    None  None
+3  Shape_Leng                 DOUBLE  YES  None    None  None
+4  Shape_Area                 DOUBLE  YES  None    None  None
+5        geom  GEOMETRY('EPSG:4326')  YES  None    None  None
+   OGC_FID  OBJECTID  DM    Shape_Leng    Shape_Area
+0        0         1   0  9.913350e+07  1.967310e+12
+1        1         2   1  7.873718e+07  1.801877e+12
+2        2         3   2  5.694090e+07  1.503583e+12
+3        3         4   3  2.608896e+07  7.235259e+11
+4        4         5   4  5.201984e+06  1.050013e+11
+geom types: [('MULTIPOLYGON',)]
+per-feature bbox:
+    (0, -159.7864540242271, 18.113873928211362, -66.53887269620988, 65.10798491683991, nan, 1138)
+    (1, -149.21930041898165, 17.884192337368592, -66.37467161921515, 64.75292251758648, nan, 568)
+    (2, -124.56603903342989, 17.928531324050645, -65.82359038217999, 49.00152841437266, nan, 336)
+    (3, -123.19667938046753, 17.927206869976906, -65.22104549612999, 48.783837391385276, nan, 89)
+    (4, -119.82554764648191, 33.40592516472878, -78.32203269354045, 45.03676903597432, nan, 21)
+vertices total: 262631
+is_valid: [(0, True), (1, True), (2, False), (3, True), (4, True)]
+
+==============================================================================
+GEOJSON: Census block groups (data/raw/census/census_blocks.geojson) [1,173 B]
+==============================================================================
+top-level keys: ['type', 'name', 'crs', 'features']
+type: FeatureCollection | name: census_blocks | crs member: {'type': 'name', 'properties': {'name': 'urn:ogc:def:crs:OGC:1.3:CRS84'}}
+feature count: 4
+property keys: ['GEOID', 'ALAND', 'population']
+  GEOID: dtype=['str'] sample=['06007000101', '06007000102', '06007000201', '06007000202']
+  ALAND: dtype=['int'] sample=[5000000, 4800000, 5200000, 5100000]
+  population: dtype=['int'] sample=[1850, 3200, 1400, 2750]
+  feat {'GEOID': '06007000101', 'ALAND': 5000000, 'population': 1850}: rings=1 interior_rings=0 npts=5 bbox=(-121.8, 39.6, -121.55, 39.8)
+  feat {'GEOID': '06007000102', 'ALAND': 4800000, 'population': 3200}: rings=1 interior_rings=0 npts=5 bbox=(-121.55, 39.6, -121.3, 39.8)
+  feat {'GEOID': '06007000201', 'ALAND': 5200000, 'population': 1400}: rings=1 interior_rings=0 npts=5 bbox=(-121.8, 39.8, -121.55, 40.0)
+  feat {'GEOID': '06007000202', 'ALAND': 5100000, 'population': 2750}: rings=1 interior_rings=0 npts=5 bbox=(-121.55, 39.8, -121.3, 40.0)
+geometry types: {'Polygon': 4}
+total extent: lon(-121.8,-121.3) lat(39.6,40.0)
+bbox member: None
+
+==============================================================================
+GEOJSON: WFIGS fire perimeters (data/raw/wfigs/wfigs_perimeters.geojson) [967 B]
+==============================================================================
+top-level keys: ['type', 'features']
+type: FeatureCollection | name: None | crs member: None
+feature count: 1
+property keys: ['poly_IncidentName', 'attr_FireDiscoveryDateTime', 'poly_Source', 'poly_Acres']
+  poly_IncidentName: dtype=['str'] sample=['Camp Fire Baseline']
+  attr_FireDiscoveryDateTime: dtype=['str'] sample=['2023-08-15T06:30:00Z']
+  poly_Source: dtype=['str'] sample=['NIFC WFIGS']
+  poly_Acres: dtype=['float'] sample=[153336.0]
+  feat {'poly_IncidentName': 'Camp Fire Baseline', 'attr_FireDiscoveryDateTime': '2023-08-15T06:30:00Z', 'poly_Source': 'NIFC WFIGS', 'poly_Acres': 153336.0}: rings=1 interior_rings=0 npts=7 bbox=(-121.72, 39.75, -121.48, 39.92)
+geometry types: {'Polygon': 1}
+total extent: lon(-121.72,-121.48) lat(39.75,39.92)
+bbox member: None

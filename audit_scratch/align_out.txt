@@ -1,0 +1,37 @@
+CANONICAL AOI: (-121.8, 39.6, -121.3, 40.0) | area deg2: 0.2 | approx km2: 1904.1
+OSM PBF header box: -121.6250000/38.3740000 -> -121.1540000/38.7380000
+OSM total ways=554,318 | ways intersecting AOI=1 (0.0002%)
+sample in-AOI ways: [{'cables': '3', 'name': 'Cottonwood-Roseville', 'operator': 'Western Area Power Administration', 'operator:short': 'WAPA', 'operator:wikidata': 'Q7987459', 'power': 'line', 'ref': 'Cottonwood-Roseville', 'source': 'USGS Ortho;WAPA;survey', 'voltage': '230000', 'wires': 'single'}]
+DEM: bounds=(-121.8, 39.8615, -121.6615, 40.0) -> AOI coverage 9.59% | overlap bbox=(-121.8, 39.8615, -121.6615, 40.0)
+EVT: bounds=(-121.8, 39.8615, -121.6615, 40.0) -> AOI coverage 9.59% | overlap bbox=(-121.8, 39.8615, -121.6615, 40.0)
+ERA5 cell-center extent: lon(-121.8,-121.3) lat(39.6,40.0) step_lon=0.05556 step_lat=0.04444
+ERA5 half-cell-padded extent: lon(-121.82778,-121.27222) lat(39.57778,40.02222)
+ERA5 covers AOI: True | padded covers AOI: True
+FIRMS VIIRS: total=74 | strictly inside AOI=0 | inside Butte buffer(Â±1Â°)=2
+MODIS: total=94,000 | strictly inside AOI=29 | inside Butte buffer(Â±1Â°)=1257
+
+AirNow station containment:
+   Paradise-Theater     (39.759,-121.611) inside_AOI=True dist_outside_deg=0.0
+   Chico-Manzanita      (39.761,-121.843) inside_AOI=False dist_outside_deg=0.043
+   Oroville-County      (39.512,-121.556) inside_AOI=False dist_outside_deg=0.088
+   Magalia-Skyway       (39.812,-121.578) inside_AOI=True dist_outside_deg=0.0
+   Cohasset-Ridge       (39.924,-121.731) inside_AOI=True dist_outside_deg=0.0
+   Forest-Ranch         (39.881,-121.672) inside_AOI=True dist_outside_deg=0.0
+Census BG 06007000101: equals_AOI_quadrant=False within_AOI=True
+Census BG 06007000102: equals_AOI_quadrant=False within_AOI=True
+Census BG 06007000201: equals_AOI_quadrant=False within_AOI=True
+Census BG 06007000202: equals_AOI_quadrant=False within_AOI=True
+WFIGS perimeter within_AOI=True | frac_of_AOI=12.60%
+USDM contains AOI centroid(-121.55,39.8): [(0, True), (1, False), (2, False), (3, False), (4, False)]
+USDM areas (million kmÂ², EPSG:6933): [(0, nan), (1, nan), (2, nan), (3, nan), (4, nan)]
+DM=2 after MakeValid: valid= True ngeom_after= 336 ngeom_before= 338
+
+==============================================================================
+H3 RES-8 MAPPING CHECKS
+==============================================================================
+H3 res-8: avg edge=0.5314 km | avg hex area=0.7523 kmÂ² | cells needed over AOI â‰ˆ 2,531
+  AOI centroid               -> h3_id=882814a02dfffff int=613194654151606271
+  Paradise (AirNow)          -> h3_id=88e228b551fffff int=616468180820295679
+  WFIGS perimeter centroid   -> h3_id=882814a1dbfffff int=613194654602493951
+  DEM/EVT grid center      -> h3_id=882814a5a3fffff
+  DEM pixel area â‰ˆ 729 mÂ² -> ~1,032 px per hex-cell
