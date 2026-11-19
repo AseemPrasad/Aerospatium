@@ -82,7 +82,6 @@ def h3_to_polygon(h3_id: str, crs: str = "EPSG:4326") -> Polygon:
     coords = [(lon, lat) for lat, lon in boundary]
     coords.append(coords[0])  # close the polygon
     poly = Polygon(coords)
-    poly.crs = crs
     return poly
 
 

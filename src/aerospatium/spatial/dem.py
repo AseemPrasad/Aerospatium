@@ -56,18 +56,12 @@ def _horn_gradients(dem: np.ndarray, dx_m: float, dy_m: float) -> tuple[np.ndarr
             window = dem[r - 1:r + 2, cc - 1:cc + 2].astype(np.float64)
             dz_dx[r, cc] = np.sum(window * c)
 
-            r_win = np.array([
-                [dem[r - 1, cc - 1], dem[r - 1, cc], dem[r - 1, cc + 1]],
-                [dem[r, cc - 1], dem[r, cc], dem[r, cc + 1]],
-                [dem[r + 1, cc - 1], dem[r + 1, cc], dem[r + 1, cc + 1]],
-            ], dtype=np.float64)
+            top = window[0, :]
+            bottom = window[2, :]
 
-        top = r_win[0, :]
-        bottom = r_win[2, :]
-
-        dz_dy[r, cc] = (
-                (top[0] + 2.0 * top[1] + top[2])
-                - (bottom[0] + 2.0 * bottom[1] + bottom[2])
+            dz_dy[r, cc] = (
+                (bottom[0] + 2.0 * bottom[1] + bottom[2])
+                - (top[0] + 2.0 * top[1] + top[2])
             ) / (8.0 * dy_m)
 
     return dz_dx, dz_dy

@@ -1,5 +1,13 @@
 """__init__ for ml package."""
-# Evaluation metrics and model training are imported lazily
-# to avoid hard dependencies on xgboost/torch at import time.
+# Lazy / safe imports
+from aerospatium.ml.gnn_hazard import (
+    NativeEdgeGAT,
+    PhysicsInformedSpreadLoss,
+    SpatioTemporalGNNSpread,
+)
 
-__all__: list[str] = []
+__all__: list[str] = [
+    "NativeEdgeGAT",
+    "PhysicsInformedSpreadLoss",
+    "SpatioTemporalGNNSpread",
+]

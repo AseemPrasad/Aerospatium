@@ -79,7 +79,7 @@ class TestRothermelPhysics:
             slope_rad=slope_rad,
             aspect_rad=aspect_rad,
             wind_speed_ms=10.0,
-            wind_dir_rad=math.radians(180),  # FROM south
+            wind_dir_rad=0.0,  # blowing towards north (0 rad)
             neighbor_azimuth_rad=0.0,  # spread northward
             fuel_moisture=0.08,
         )

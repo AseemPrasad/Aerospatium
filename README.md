@@ -80,6 +80,17 @@ Raw Sources (11 feeds) → H3 Grid (2,526 hexes) → GNN Hazard Engine
                       Interactive 3D Dashboard (MapLibre GL)
 ```
 
+## Operating Modes & Sensor Latency Guarantees
+
+AeroSpatium is designed with a two-tier operational architecture:
+
+1. **Tactical Simulation & Retrospective Benchmark Mode**:
+   - Calibrated and validated on historical mega-fire events (e.g. Camp Fire / Butte County).
+   - Ingests high-fidelity atmospheric reanalysis (**ERA5-Land**, 0.1° hourly) and polar orbiter passes (**NASA FIRMS MODIS/VIIRS**, 6–12h cadence).
+2. **Operational Real-Time Dispatch Mode**:
+   - Replaces high-latency reanalysis feeds with operational short-range forecasts (**NOAA HRRR**, 3 km grid, 1-hour updates).
+   - Ingests geostationary active fire observations (**GOES-R ABI / GOES-16/18**, 5-minute cadence) mapped directly to the H3 grid topology.
+
 ## Key Data Sources
 
 | Source | Format | Role |

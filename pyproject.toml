@@ -98,6 +98,12 @@ ignore_missing_imports = true
 minversion = "7.4"
 addopts = "-ra -q --strict-markers"
 testpaths = ["tests"]
+pythonpath = ["src"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning:pydantic.*",
+    "ignore::UserWarning:langsmith.*",
+]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks integration tests",

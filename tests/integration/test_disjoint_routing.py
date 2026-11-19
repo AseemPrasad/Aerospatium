@@ -67,20 +67,20 @@ class TestTimeDependentAStar:
 
     def test_closed_edge_avoided(self, sample_graph):
         """A* should avoid edges with weight >= 1e8 (hard closure)."""
-        nodes, edges = sample_graph.copy()
-        # Close the direct path edge 0→1
-        edges.loc[edges["edge_id"] == 0, "base_time_s"] = 1e9
+        nodes, edges = sample_graph[0].copy(), sample_graph[1].copy()
+        # Close the direct path edge 1→2 (bypass is 1→5→6→7→3)
+        edges.loc[edges["edge_id"] == 1, "base_time_s"] = 1e9
 
         path_nodes, _path_edges, _travel_time, _risk = time_dependent_astar(
-            edges, nodes, start=0, goal=2, weight_column="base_time_s",
+            edges, nodes, start=0, goal=3, weight_column="base_time_s",
         )
 
         assert path_nodes is not None, "Should find a route avoiding closed edge"
-        assert 0 not in (_path_edges or []), "Should not use the closed edge"
+        assert 1 not in (_path_edges or []), "Should not use the closed edge"
 
     def test_no_path_returns_none(self, sample_graph):
         """When all paths are closed, A* should return None."""
-        nodes, edges = sample_graph.copy()
+        nodes, edges = sample_graph[0].copy(), sample_graph[1].copy()
         edges["base_time_s"] = 1e9  # close everything
 
         path_nodes, _path_edges, travel_time, _risk = time_dependent_astar(

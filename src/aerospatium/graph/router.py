@@ -37,15 +37,21 @@ def build_adjacency_from_edges(
     -------
     dict mapping node_id -> list of (neighbor_id, edge_id, weight)
     """
-    adj = {}
-    for _, row in edges_df.iterrows():
-        u = int(row["u"])
-        v = int(row["v"])
-        eid = int(row["edge_id"])
-        w = float(row.get("weight", row.get("base_time_s", 0.0)))
-        if u not in adj:
-            adj[u] = []
-        adj[u].append((v, eid, w))
+    adj: dict[int, list[tuple[int, int, float]]] = {}
+    if edges_df.empty:
+        return adj
+
+    weight_col = "weight" if "weight" in edges_df.columns else "base_time_s"
+    u_vals = edges_df["u"].to_numpy()
+    v_vals = edges_df["v"].to_numpy()
+    eid_vals = edges_df["edge_id"].to_numpy()
+    w_vals = edges_df[weight_col].to_numpy() if weight_col in edges_df.columns else [0.0] * len(edges_df)
+
+    for u, v, eid, w in zip(u_vals, v_vals, eid_vals, w_vals):
+        u_int = int(u)
+        if u_int not in adj:
+            adj[u_int] = []
+        adj[u_int].append((int(v), int(eid), float(w)))
     return adj
 
 
@@ -292,7 +298,7 @@ def find_disjoint_corridors(
     """
     p_nodes, p_edges, p_time, p_risk = time_dependent_astar(
         edges_df, node_df, start, goal,
-        departure_time=departure_time_s,
+        departure_time_s=departure_time_s,
         weight_column=weight_column,
     )
 
@@ -306,8 +312,8 @@ def find_disjoint_corridors(
     penalized_edges.loc[mask, weight_column] = penalized_edges.loc[mask, weight_column] * 100.0 + 1e6
 
     s_nodes, s_edges, s_time, s_risk = time_dependent_astar(
-        edges_df, node_df, start, goal,
-        departure_time=departure_time_s,
+        penalized_edges, node_df, start, goal,
+        departure_time_s=departure_time_s,
         weight_column=weight_column,
     )
 
