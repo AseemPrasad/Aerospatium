@@ -38,6 +38,19 @@ AeroSpatium is engineered for **civil defense, emergency management, and real-ti
 
 ---
 
+## 🎯 Primary Use Cases & Operational Roles
+
+* **🚨 Real-Time Emergency Evacuation Dispatch (Incident Command)**:
+  Acts as an automated routing engine for Incident Command Systems (ICS). When an active fire is detected, it projects progression 1–12 hours ahead, predicts severed road segments, and generates dual escape corridors before choke points become traps.
+* **🗺️ Civil Defense & Municipal Evacuation Planning**:
+  Enables counties and transportation departments (e.g. Caltrans) to stress-test road infrastructure against extreme historical or synthetic dry-wind events to identify single-point-of-failure corridors and design auxiliary escape roads.
+* **📞 Computer-Aided Dispatch (CAD / 911 Integration)**:
+  Integrates into 911 dispatch systems to provide call operators with hazard-aware routes that steer evacuating residents away from encroaching fire fronts and toxic PM2.5 smoke plumes.
+* **🔍 Post-Incident Forensic Reconstruction**:
+  Replays multi-modal satellite, weather, and traffic data to reconstruct the timeline of road impassability, traffic breakdown cascades, and evacuation corridor performance.
+
+---
+
 ## 📐 System Pipeline Architecture
 
 ```
